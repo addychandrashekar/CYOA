@@ -1,10 +1,3 @@
-//
-//  main.cpp
-//  CYOA
-//
-//  Created by Chaya Venkatasubbarao on 10/3/17.
-//  Copyright © 2017 Addy Chandrashekar. All rights reserved.
-//
 
 //This is a change
 
@@ -19,16 +12,16 @@ int main() {
     int health = 0;
     string name = "";
     int age = 0;
-    int won;
+    //int won;
     int start = 0;
     int livingRoom = 0;
-    int noteRoom = 0;
-    int upstairs = 0;
-    int eastRoom = 0;
-    int northRoom = 0;
-    int westRoom = 0;
-    int southRoom = 0;
-    int swordRoom = 0;
+    //int noteRoom = 0;
+    //int upstairs = 0;
+    //int eastRoom = 0;
+    //int northRoom = 0;
+    //int westRoom = 0;
+    //int southRoom = 0;
+    //int swordRoom = 0;
     bool hasStick = false;
     
     
@@ -48,7 +41,7 @@ int main() {
         choice = "q";
     }
     
-    while (choice != "q" && choice != "Q") {
+    while ((choice != "q" && choice != "Q") || health > 0) {
         
         
         if (location == "start" && start == 0) {
@@ -89,97 +82,99 @@ int main() {
             }
             
             if (choice == "2"){
-                cout << "You were watching a movie where someone was shooting a gun and the tv sucked you into the movie and you got shot in the head so you died.\n";
-                choice = "q";
+                health -= 50;
+                cout << "You were watching a movie where someone was shooting a gun and the tv sucked you into the movie and you got shot and was injured.\n" << "You now have " << health;
+                
             }
             
             if (choice == "3"){
-                cout << "You were too busy playing on the computer when a fan fell on your head and killed you. Bad luck.\n";
-                choice = "q";
+                health -= 60;
+                cout << "You were too busy playing on the computer when a fan fell on your head. Bad luck.\n" << "You now have " << health;
             }
             
             if (choice == "4"){
-                cout << "You tried to steal the painting but it activated lazers and the lazers killed you. Tough luck.\n";
-                choice = "q";
+                health -= 50;
+                cout << "You tried to steal the painting but it activated lazers. Tough luck.\n" << "You now have " << health;
             }
             
             if (choice == "5"){
                 location = "noteRoom";
             }
-           
+            
         }
         
-
-                
+        
+        
         if (location == "noteRoom"){
             cout << "You opened the door and you walked in. Suddenly, you saw a note on the floor. Would you like to pick it up?\n 1. Yes\n 2. No\n";
             cin >> choice;
-                   
+            
             if (choice == "1"){
                 cout << "You picked up the note. It says " "Hello. I am Dr. James Hardy and I wrote this note to tell whoever is here how to get out. You need to first find a sword and then enter a room where there are minions and a boss. You need to destroy the minions and the boss in order for you to be able to get the key that can get out of here. Once you get the key, you need to beat 2 more bosses in order to get to the door which gets you out of here. I wish you luck. I wrote this note before I died. Good luck and have fun!!! Hope you make it out of here alive.. PS: If you try killing the minions or the boss without a sword, they will easily kill you. You have no chance. Even if you find a glitch to get to the door without killing the bosses, without the key, you can't open it. If you try to open it or try to break it, it will activate a booby trap which will activate spikes to come from the floor and the walls will start to close in. If you somehow survive, a bomb will go off so either way, you are going to die. Have fun!!! Have a good day too.\n";
-                       
+                
                 cout << "Enter 1 if you would like to go back through the door. Enter 2 if you would like to climb the stairs!\n";
-                        
+                
                 cin >> choice;
-                        
-                        
+                
+                
                 if (choice == "1") {
                     location = "start";
                 }
-                        
+                
                 else if(choice == "2"){
                     location = "upstairs";
                 }
             }
-
-                    
-                else if (choice == "2"){
+            
+            
+            else if (choice == "2"){
                 cout << "Enter 1 if you would like to go back through the door. Enter 2 if you would like to climb the stairs!\n";
-                        cin >> choice;
-                        
-                        if (choice == "1"){
-                            location = "start";
-                        }
-                        
-                        else if(choice == "2"){
-                            location = "upstairs";
-                        }
-                    }
-                }
-        
+                cin >> choice;
                 
-                if (location == "upstairs") {
-                    cout << "You are now upstairs. You see 4 doors. One to your north. One to your east. One to your South. One to your West. Enter n to go north, e to go east, s to go south, w to go west, and d to go downstairs.\n";
-                    cin >> choice;
-                    
-                    if (choice == "n" || choice == "N"){
-                        location = "northRoom";
-                    }
-                    
-                    if (choice == "e" || choice == "E") {
-                        location = "eastRoom";
-                    }
-                    
-                    if (choice == "s" || choice == "S") {
-                        location = "southRoom";
-                    }
-                    
-                    if (choice == "w" || choice == "W") {
-                        location = "westRoom";
-                    }
-                    
-                    if (choice == "d" || choice == "D") {
-                        location = "noteRoom";
-                    }
+                if (choice == "1"){
+                    location = "start";
                 }
+                
+                else if(choice == "2"){
+                    location = "upstairs";
+                }
+            }
+        }
+        
+        
+        if (location == "upstairs") {
+            cout << "You are now upstairs. You see 4 doors. One to your north. One to your east. One to your South. One to your West. Enter n to go north, e to go east, s to go south, w to go west, and d to go downstairs.\n";
+            cin >> choice;
+            
+            if (choice == "n" || choice == "N"){
+                location = "northRoom";
+            }
+            
+            if (choice == "e" || choice == "E") {
+                location = "eastRoom";
+            }
+            
+            if (choice == "s" || choice == "S") {
+                location = "southRoom";
+            }
+            
+            if (choice == "w" || choice == "W") {
+                location = "westRoom";
+            }
+            
+            if (choice == "d" || choice == "D") {
+                location = "noteRoom";
+            }
+        }
         
         if (location == "northRoom" && hasStick == false) {
             cout << "You opened the door and went in it. You are now in the North Room. There is a monster with a bazooka roaming around. It saw you and it turned towards you.\n Enter 1 if you would like to fight.\n Enter 2 if you want to go out the door.\n";
             cin >> choice;
             
             if (choice == "1") {
-                cout << "You tried fighting the monster with your bare hands. It was hands vs bazooka so take a guess on who won. If you guessed the monster, you are right. It blew you up into a million different pieces and you died. You are really stupid, did you really think you would win?\n";
-                choice = "q";
+                health -= 60;
+                cout << "You tried fighting the monster with your bare hands. It was hands vs bazooka so take a guess on who won. If you guessed the monster, you are right. It blew you up into a million different pieces and hurt you. You are really stupid, did you really think you would win?\n" << "You now have " << health;
+                
             }
             
             if (choice == "2") {
@@ -191,7 +186,7 @@ int main() {
             if (hasStick == true) {
                 cout << "You opened the door and went in it. You are now in the North Room. There is a monster with a bazooka roaming around. It saw you and it turned towards you.\n Enter 1 if you would like to fight.\n Enter 2 if you want to go out the door.\n";
                 cin >> choice;
-            
+                
                 if (choice == "1") {
                     cout << "You killed the monster and you got a knife. Enter 1 to exit the room.";
                     cin >> choice;
@@ -214,26 +209,26 @@ int main() {
             }
         }
         if (location == "eastRoom") {
-             cout << "You opened the door and you walked in. You are now in the East Room. You see a shiny object. You go towards it and you see that it is a golden box. Would you like to open the box?\n Enter y if you would like to open the box and enter n if you don't want to.\n";
-             cin >> choice;
+            cout << "You opened the door and you walked in. You are now in the East Room. You see a shiny object. You go towards it and you see that it is a golden box. Would you like to open the box?\n Enter y if you would like to open the box and enter n if you don't want to.\n";
+            cin >> choice;
             
             if (choice == "y" || choice == "Y") {
                 cout << "You opened the box and you see a letter. The letter says 2903. You don't know what that means. Would you like to keep the letter?\n Enter y if you want to and enter n if you don't want to.\n";
                 cin >> choice;
-               
+                
                 if (choice == "y" || choice == "Y") {
                     cout << "You have now picked up the paper. Enter 1 if you want to walk back out the door and you can't really explore the room anymore so I suggest you leave the room.\n";
                     cin >> choice;
                     
                     if (choice == "1"){
                         location = "upstairs";
+                    }
                 }
             }
         }
-    }
         if (location == "southRoom") {
             cout << "You are now in the South Room. There is a locked door here. You need to enter a four digit passcode in order to open the door.\n Enter the passcode: \n";
-             cin >> choice;
+            cin >> choice;
             
             if (choice == "2903") {
                 location = "stickRoom";
@@ -252,8 +247,8 @@ int main() {
         }
         
         if (location == "westRoom") {
-             cout << "You are now in the West Room. You see things. (This room is still being worked on so I suggest you leave.\n Just enter leave to leave the room.\n";
-             cin >> choice;
+            cout << "You are now in the West Room. You see things. (This room is still being worked on so I suggest you leave.\n Just enter leave to leave the room.\n";
+            cin >> choice;
             
             if (choice == "leave") {
                 location = "upstairs";
@@ -277,15 +272,15 @@ int main() {
                 }
             }
         }
-            else if (choice == "no" || choice == "nO" || choice == "No"|| choice == "NO") {
-                cout << "You did not pick up the stick. Enter 1 to leave the room and enter 2 to stay.\n";
-                
-                if (choice == "1") {
-                    location = "southRoom";
-                }
-                else if (choice == "2") {
-                    cin >> choice;
-                }
+        else if (choice == "no" || choice == "nO" || choice == "No"|| choice == "NO") {
+            cout << "You did not pick up the stick. Enter 1 to leave the room and enter 2 to stay.\n";
+            
+            if (choice == "1") {
+                location = "southRoom";
+            }
+            else if (choice == "2") {
+                cin >> choice;
+            }
         }
         
         if (location ==  "dream") {
@@ -303,7 +298,7 @@ int main() {
                 }
                 
             }
-           
+            
             if (choice == "no") {
                 cout << "You have now died since you were so stupid enough to not pick up the gun and shoot at the zombies";
                 cout << "You have now woken up from your dream";
